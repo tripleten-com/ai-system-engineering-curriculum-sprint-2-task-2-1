@@ -1,0 +1,33 @@
+# Coldline - Task 2.1
+# File: submission-sample.yaml
+# Component: Fictional completed answer sheet
+# Purpose: Show the accepted shape without showing real answers.
+# Interacts With: docs/contracts/submission.schema.json
+# Sprint/Task: Sprint 2 - Project 2 / Task 2.1
+# Concepts: Answer-sheet shape
+# Tools: YAML
+
+# Complete submission.yaml from the evidence sources named beside each answer group.
+# Keep the supplied keys; replace empty strings using each field's stated type.
+# Empty values and placeholder text fail verification.
+# Use submission-sample.yaml for format only; do not copy its fictional values.
+# Do not include secrets, personal data, or local absolute paths.
+# This fictional sample is not a result to submit; an exact copy is rejected.
+
+answers:
+  # Task 2.1 — Step 3: Retrieval baseline
+  # Trace hybrid retrieval and characterize success and miss.
+  # After starting the stack and ingesting the corpus in Steps 1–2, run
+  # `poe baseline`. Read the final ranked results for the published queries.
+  # Sources: infra/corpus/queries.jsonl and docs/retrieval/pipeline.md.
+  # IDs are strings of 3–120 characters: q- followed by lowercase letters,
+  # digits, or hyphens, with a letter or digit immediately after q-.
+  #
+  # Criteria for the two query identifiers:
+  # - success: The query's target document appears in the final ranked results.
+  # - miss: The query's target document appears nowhere in the final ranked results.
+  #
+  # Record one query ID string from `poe baseline` meeting the success criterion.
+  success_query_id: "q-sample-success-not-a-real-query"
+  # Record one different query ID string from `poe baseline` meeting the miss criterion.
+  miss_query_id: "q-sample-miss-not-a-real-query"

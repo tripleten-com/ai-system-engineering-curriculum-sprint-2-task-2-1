@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Coldline Task 2.1 public answer contract. This schema validates structure only. Whether a recorded query actually meets the published success or miss criterion is recomputed from the running system by the public verifier, not encoded here.",
+  "title": "Coldline Task 2.1 answers",
+  "description": "Direct baseline-evaluation observations submitted through the Task pull request.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["answers"],
+  "properties": {
+    "answers": {
+      "description": "The only top-level answer mapping accepted by the public verifier.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["success_query_id", "miss_query_id"],
+      "properties": {
+        "success_query_id": {
+          "description": "Identifier of a published query whose result meets the success criterion.",
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120,
+          "pattern": "^q-[a-z0-9][a-z0-9-]*$"
+        },
+        "miss_query_id": {
+          "description": "Identifier of a published query whose result meets the miss criterion.",
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120,
+          "pattern": "^q-[a-z0-9][a-z0-9-]*$"
+        }
+      }
+    }
+  }
+}
