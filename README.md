@@ -2,7 +2,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tripleten-com/ai-system-engineering-curriculum-sprint-2-task-2-1/tree/main)
 
-## Start the system
+## Step 1: Start the system and check readiness
 
 Prerequisites are Python 3.12 and Docker with Compose v2. The supplied bootstrap supports macOS
 arm64/x86-64, Windows x86-64, and Linux x86-64/aarch64, and installs pinned uv 0.11.8 under
@@ -17,8 +17,6 @@ python infra/scripts/bootstrap.py
 ./.tools/bin/uv run --frozen poe preflight
 ./.tools/bin/uv run --frozen poe start
 ./.tools/bin/uv run --frozen poe ready
-./.tools/bin/uv run --frozen poe ingest
-./.tools/bin/uv run --frozen poe baseline
 ```
 
 PowerShell and POSIX wrappers are available under `infra/scripts/`. After uv is on `PATH`, the
@@ -50,17 +48,32 @@ For example, to use port 8001, run the command for your shell before starting th
 PostgreSQL, Redis, worker metrics, and OTLP remain inside the Compose network. Codespaces uses the
 same `compose.yaml` and keeps every forwarded port private.
 
-## Command path
+## Step 2: Ingest and inspect the corpus
 
-For a fresh investigation, run the supplied commands in this order:
+After Step 1 readiness checks pass, load the prepared documents and provenance through ObjectStore:
 
-```text
-poe start
-poe ready
-poe ingest
-poe baseline
-poe verify
+```shell
+./.tools/bin/uv run --frozen poe ingest
 ```
+
+Inspect the report's object keys and corpus details, then follow
+[Inspect database and object-store evidence](#inspect-database-and-object-store-evidence).
+Check the records and access labels before running the baseline evaluation.
+
+## Step 3: Run and inspect the baseline
+
+```shell
+./.tools/bin/uv run --frozen poe baseline
+```
+
+Read the per-query and per-stage evidence using the published outcome rules. Complete your
+answer sheet from the observed results, then run the complete public command:
+
+```shell
+./.tools/bin/uv run --frozen poe verify
+```
+
+## Command reference
 
 | Command | Use |
 |---|---|
